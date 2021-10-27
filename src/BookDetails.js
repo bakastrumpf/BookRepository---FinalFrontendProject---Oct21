@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from 'formik'
-import './CustomerDetails.css';
+import './BookDetails.css';
 import { customerYupSchema, toStandardTime } from "./validationTools";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -8,17 +8,17 @@ import DatePicker from '@mui/lab/DatePicker'
 import { useHistory } from "react-router-dom";
 
 
-const CustomerDetails = ({ startingMode, customer, action }) => {
+const BookDetails = ({ startingMode, book, action }) => {
     const [mode, setMode] = useState(startingMode);
     const history = useHistory();
     let message = "";
     let inputProps = {}
     let hideID = false;
     if(mode === "view") {
-        message = `Преглед ${customer.firstName} ${customer.lastName}`;
+        message = `Преглед ${book.firstName} ${book.lastName}`;
         inputProps = { readOnly: true };
     }else if(mode === "edit") {
-        message = `Измена ${customer.firstName} ${customer.lastName}`;
+        message = `Измена ${book.firstName} ${book.lastName}`;
     }else if(mode === "create"){
         message = "Унеси нову књигу";
         hideID = true;
@@ -26,8 +26,8 @@ const CustomerDetails = ({ startingMode, customer, action }) => {
     return <div className="formContent">
         <h3>{message}</h3>
         <Formik
-            initialValues={customer}
-            validationSchema={customerYupSchema}
+            initialValues={book}
+            validationSchema={bookYupSchema}
             onSubmit={(values, {setSubmitting}) => {
                 const rez = action(values);
                 setSubmitting(false);
@@ -51,7 +51,7 @@ const CustomerDetails = ({ startingMode, customer, action }) => {
                     fullWidth
                     margin="normal"
                     name="id"
-                    label="Id"
+                    label="ИД"
                     value={values.id}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -161,9 +161,9 @@ const CustomerDetails = ({ startingMode, customer, action }) => {
     </div>
 };
 
-CustomerDetails.defaultProps = {
-    customer: { "id": null, firstName: "", lastName: "", birthday: "", joinDay: "", email: "", address: "" },
+BookDetails.defaultProps = {
+    book: { "id": null, firstName: "", lastName: "", birthday: "", joinDay: "", email: "", address: "" },
     startingMode: "view"
 }
 
-export default CustomerDetails;
+export default BookDetails;

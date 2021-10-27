@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useAuth } from './useAuth';
 
-export const usePagedCustomerList = (initialPageSize, url="http://localhost:3080/app/customers") => {
+export const usePagedBooksList = (initialPageSize, url="http://localhost:3081/app/books") => {
     const [pageSize, setPageSize] = useState(initialPageSize);
     const [list, setList] = useState([]);
     const [location, setLocation] = useState(1);
@@ -90,7 +90,7 @@ export const usePagedCustomerList = (initialPageSize, url="http://localhost:3080
     ];
 }
 
-export const usePagedSearchCustomerList = (initialPageSize, query, url="http://localhost:3081/app/customers") => {
+export const usePagedSearchBooksList = (initialPageSize, query, url="http://localhost:3081/app/books") => {
     const [pageSize, setPageSize] = useState(initialPageSize);
     const [list, setList] = useState([]);
     const [location, setLocation] = useState(1);
@@ -187,7 +187,7 @@ export const usePagedSearchCustomerList = (initialPageSize, query, url="http://l
 
 
 
-export const deleteCustomer = async (id, login, url="http://localhost:3080/app/customers") => {
+export const deleteBook = async (id, login, url="http://localhost:3081/app/books") => {
     const resp = await fetch(`${url}/${id}`, {
         method: "DELETE",
         headers: {
@@ -199,21 +199,21 @@ export const deleteCustomer = async (id, login, url="http://localhost:3080/app/c
     else return [false, data.body]
 }
 
-export const updateCustomer = async (customer, login, url="http://localhost:3080/app/customers") => {
-    const resp = await fetch(`${url}/${customer.id}`, {
+export const updateBook = async (customer, login, url="http://localhost:3081/app/books") => {
+    const resp = await fetch(`${url}/${book.id}`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${login.jwt}`
         },
-        body: JSON.stringify(customer)
+        body: JSON.stringify(book)
     });
     const data = await resp.json();
     if(data.status === "ok") return [true, ""];
     else return [false, data.body]
 }
 
-export const addCustomer = async (customer, login, url="http://localhost:3080/app/customers") => {
+export const addBook = async (book, login, url="http://localhost:3081/app/books") => {
     const resp = await fetch(`${url}/new`, {
         method: "POST",
         headers: {
@@ -227,8 +227,8 @@ export const addCustomer = async (customer, login, url="http://localhost:3080/ap
     else return [false, data.body]
 }
 
-export const useCustomer = (id, url="http://localhost:3080/app/customer") => {
-    const [customer, setCustomer] = useState(null);
+export const useBook = (id, url="http://localhost:3081/app/books") => {
+    const [book, setBook] = useState(null);
     const [loading, setLoading] = useState(true);
     const [login] = useAuth();
 
@@ -242,11 +242,11 @@ export const useCustomer = (id, url="http://localhost:3080/app/customer") => {
         }).then(resp => resp.json())
         .then(data => {
             if(data.status === "ok"){
-                setCustomer(data.body);
+                setBook(data.body);
                 setLoading(false);
             }
         });
     }, []);
 
-    return [customer, loading];
+    return [book, loading];
 }

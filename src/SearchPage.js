@@ -1,6 +1,6 @@
 import React, {useState, useMemo, useRef, useEffect} from "react";
-import { usePagedCustomerList, deleteCustomer, usePagedSearchCustomerList} from "./accessHooks";
-import CustomerList from "./CustomerList";
+import { usePagedBookList, deleteBook, usePagedSearchBookList} from "./accessHooks";
+import BookList from "./BookList";
 import TablePagination from '@mui/material/TablePagination';
 import { Button } from "@mui/material";
 import {Link as RouterLink} from 'react-router-dom';
@@ -8,7 +8,7 @@ import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
 import { useAuth } from "./useAuth";
 
-const CustomerSearchPage = () => {
+const BookSearchPage = () => {
     const [query, setQuery] = useState("");
     const [searchQuery, setSearchQuery] = useState("")
     const [login] = useAuth();
@@ -26,13 +26,13 @@ const CustomerSearchPage = () => {
         pageSize,
         setPageSize,
         reload
-    ] = usePagedSearchCustomerList(10, searchQuery);
+    ] = usePagedSearchBookList(10, searchQuery);
     if(loading){
-        return <h3>Loading...</h3>;
+        return <h3>Учитавам...</h3>;
     }else{
         return <div>
             <Box sx={{display: "flex", flexDirection:"row", padding: "10px", alignItems: "baseline"}}>
-            <Button component={RouterLink} to="/customer/new" variant="contained">Dodaj</Button>
+            <Button component={RouterLink} to="/book/new" variant="contained">Dodaj</Button>
             <TextField
                     sx={{flexGrow: 1, marginLeft: "60px"}}
                     margin="normal"
@@ -47,8 +47,8 @@ const CustomerSearchPage = () => {
                 />
                 <Button sx={{marginLeft: "20px"}} variant="contained" onClick={() => setSearchQuery(query)}>Pokreni pretragu</Button>
                 </Box>
-            <CustomerList list={list} onDelete={(id) => {
-                deleteCustomer(id, login);
+            <BookList list={list} onDelete={(id) => {
+                deleteBook(id, login);
                 reload();
                 }}/>
             <TablePagination
@@ -67,4 +67,4 @@ const CustomerSearchPage = () => {
     }
 }
 
-export default CustomerSearchPage;
+export default BookSearchPage;
