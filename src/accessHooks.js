@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import BookDetailsPage from './BookDetailsPage';
 import { useAuth } from './useAuth';
 
-export const usePagedBooksList = (initialPageSize, url="http://localhost:3081/app/books") => {
+export const usePagedBookList = (initialPageSize, url="http://localhost:3081/app/books") => {
     const [pageSize, setPageSize] = useState(initialPageSize);
     const [list, setList] = useState([]);
     const [location, setLocation] = useState(1);
@@ -90,7 +91,7 @@ export const usePagedBooksList = (initialPageSize, url="http://localhost:3081/ap
     ];
 }
 
-export const usePagedSearchBooksList = (initialPageSize, query, url="http://localhost:3081/app/books") => {
+export const usePagedSearchBookList = (initialPageSize, query, url="http://localhost:3081/app/books") => {
     const [pageSize, setPageSize] = useState(initialPageSize);
     const [list, setList] = useState([]);
     const [location, setLocation] = useState(1);
@@ -199,7 +200,7 @@ export const deleteBook = async (id, login, url="http://localhost:3081/app/books
     else return [false, data.body]
 }
 
-export const updateBook = async (customer, login, url="http://localhost:3081/app/books") => {
+export const updateBook = async (book, login, url="http://localhost:3081/app/books") => {
     const resp = await fetch(`${url}/${book.id}`, {
         method: "PUT",
         headers: {
@@ -220,7 +221,7 @@ export const addBook = async (book, login, url="http://localhost:3081/app/books"
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${login.jwt}`
         },
-        body: JSON.stringify(customer)
+        body: JSON.stringify(BookDetailsPage)
     });
     const data = await resp.json();
     if(data.status === "ok") return [true, ""];
