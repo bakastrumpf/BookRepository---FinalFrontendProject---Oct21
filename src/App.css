@@ -1,0 +1,27 @@
+.main{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 1fr;
+}
+
+.mainNav{
+  display: flex;
+  flex-direction: row;
+  grid-row: 1;
+  grid-column: 1;
+  padding:10px;
+}
+
+.mainContent{
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.loginBox{
+  max-width: 40vw;
+  padding: 20px;
+  border: 2px #a1c2ff solid;
+  border-radius: 40px;
+  margin: 10px;
+  justify-self: center;
+}

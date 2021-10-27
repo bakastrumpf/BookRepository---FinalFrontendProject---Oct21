@@ -1,0 +1,7 @@
+.formContent{
+    max-width: 60vw;
+    padding: 20px;
+    border: 2px #a1c2ff solid;
+    border-radius: 40px;
+    margin: 10px;
+}
