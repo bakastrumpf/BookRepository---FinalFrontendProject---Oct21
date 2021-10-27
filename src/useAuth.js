@@ -25,7 +25,7 @@ const useProvideAuth = () => {
             body: JSON.stringify({username: username, password: password})
         }).then(response => response.json())
         .then(data => {
-            if(data.status != "ok"){
+            if(data.status !== "ok"){
                 setLogin(null);
                 setError(data.body);
                 failCallback();    

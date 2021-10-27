@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik } from 'formik'
 import './BookDetails.css';
-import { customerYupSchema, toStandardTime } from "./validationTools";
+import { bookYupSchema, toStandardTime } from "./validationTools";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import DatePicker from '@mui/lab/DatePicker'
@@ -15,10 +15,10 @@ const BookDetails = ({ startingMode, book, action }) => {
     let inputProps = {}
     let hideID = false;
     if(mode === "view") {
-        message = `Преглед ${book.firstName} ${book.lastName}`;
+        message = `Преглед ${book.title} аутора ${book.author}`;
         inputProps = { readOnly: true };
     }else if(mode === "edit") {
-        message = `Измена ${book.firstName} ${book.lastName}`;
+        message = `Измена ${book.title} аутора ${book.author}`;
     }else if(mode === "create"){
         message = "Унеси нову књигу";
         hideID = true;
@@ -63,92 +63,114 @@ const BookDetails = ({ startingMode, book, action }) => {
                 <TextField
                     fullWidth
                     margin="normal"
-                    name="firstName"
-                    label="Име"
-                    value={values.firstName}
+                    name="title"
+                    label="Назив"
+                    value={values.title}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    error={touched.firstName && Boolean(errors.firstName)}
-                    helperText={touched.firstName && errors.firstName}
+                    error={touched.title && Boolean(errors.title)}
+                    helperText={touched.title && errors.title}
                     variant="outlined"
                     InputProps={inputProps}
                 />
                 <TextField
                     fullWidth
                     margin="normal"
-                    name="lastName"
-                    label="Презиме"
-                    value={values.lastName}
+                    name="author"
+                    label="аутор"
+                    value={values.author}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    error={touched.lastName && Boolean(errors.lastName)}
-                    helperText={touched.lastName && errors.lastName}
+                    error={touched.author && Boolean(errors.author)}
+                    helperText={touched.author && errors.author}
                     variant="outlined"
+                    multiline
+                    maxRows={4}
                     InputProps={inputProps}
                 />
 
                 <TextField
                     fullWidth
                     margin="normal"
-                    name="email"
-                    label="Имејл"
-                    value={values.email}
+                    name="isbn"
+                    label="ИСБН"
+                    value={values.isbn}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email}
+                    error={touched.isbn && Boolean(errors.isbn)}
+                    helperText={touched.isbn && errors.isbn}
                     variant="outlined"
                     InputProps={inputProps}
                 />
 
             <DatePicker
                     margin="normal"
-                    name="birthday"
-                    label="Рођендан:"
-                    value={values.birthday}
+                    name="publishDate"
+                    label="Објављено:"
+                    value={values.publishDate}
                     readOnly={inputProps.readOnly ? true : false}
                     onChange={(e) => {
-                        setFieldValue("birthday", toStandardTime(e));
-                        setFieldTouched("birthday", true, true);
-                        validateField("birthday");
+                        setFieldValue("publishDate", toStandardTime(e));
+                        setFieldTouched("publishDate", true, true);
+                        validateField("publishDate");
                     }}
                     onBlur={handleBlur}                    
                     renderInput={(params) => <TextField {...params}/>}
                 />
                 <span>
-                    {(touched.birthday && Boolean(errors.birthday)) ? errors.birthday : ""}
-                </span><br/>
-                <DatePicker
-                    margin="normal"
-                    name="joinDay"
-                    label="Датум уноса:"
-                    value={values.joinDay}
-                    readOnly={inputProps.readOnly ? true : false}
-                    onChange={(e) => {
-                        setFieldValue("joinDay", toStandardTime(e));
-                        setFieldTouched("joinDay", true, true);
-                        validateField("joinDay");
-                    }}
-                    onBlur={handleBlur}
-                    renderInput={(params) => <TextField {...params}/>}
-                />
-                <span>
-                    {(touched.joinDay && Boolean(errors.joinDay)) ? errors.joinDay : ""}
+                    {(touched.publishDate && Boolean(errors.publishDate)) ? errors.birthday : ""}
                 </span><br/>
                 <TextField
                     fullWidth
                     margin="normal"
-                    name="address"
-                    label="Адреса:"
-                    value={values.address}
+                    name="rating"
+                    label="Рејтинг:"
+                    value={values.rating}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    error={touched.address && Boolean(errors.address)}
-                    helperText={touched.address && errors.address}
-                    multiline
-                    maxRows={4}
+                    error={touched.rating && Boolean(errors.rating)}
+                    helperText={touched.rating && errors.rating}
+                    
                     variant="outlined"
                 />
+                <TextField
+                    fullWidth
+                    margin="normal"
+                    name="genre"
+                    label="Жанр:"
+                    value={values.genre}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.genre && Boolean(errors.genre)}
+                    helperText={touched.genre && errors.genre}
+                    
+                    variant="outlined"
+                />
+                <TextField
+                fullWidth
+                margin="normal"
+                name="available"
+                label="Доступно:"
+                value={values.available}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.available && Boolean(errors.available)}
+                helperText={touched.available && errors.available}
+                
+                variant="outlined"
+            />
+            <TextField
+            fullWidth
+            margin="normal"
+            name="pages"
+            label="Број страна:"
+            value={values.pages}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.pages && Boolean(errors.pages)}
+            helperText={touched.pages && errors.pages}
+            variant="outlined"
+        />
 
                 {
                     (mode === "view") ? "" : <Button disabled={isSubmitting} 
@@ -162,7 +184,7 @@ const BookDetails = ({ startingMode, book, action }) => {
 };
 
 BookDetails.defaultProps = {
-    book: { "id": null, firstName: "", lastName: "", birthday: "", joinDay: "", email: "", address: "" },
+    book: { "id": null, title: "", author: "", publishDate: "", isbn: "", rating: "", genre: "", available: "", pages: "" },
     startingMode: "view"
 }
 

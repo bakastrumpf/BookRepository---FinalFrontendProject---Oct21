@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import { usePagedBooksList, deleteBook} from "./accessHooks";
-import BooksList from "./BooksList";
+import { usePagedBookList, deleteBook} from "./accessHooks";
+import BookList from "./BookList";
 import TablePagination from '@mui/material/TablePagination';
 import { Button } from "@mui/material";
 import {Link as RouterLink} from 'react-router-dom';
 
 import {useAuth} from './useAuth';
 
-const AllCustomersPage = () => {
+const AllBooksPage = () => {
     const [
         list,
         location,
@@ -22,14 +22,14 @@ const AllCustomersPage = () => {
         pageSize,
         setPageSize,
         reload
-    ] = usePagedBooksList(10);
+    ] = usePagedBookList(10);
     const [login] = useAuth();
     if(loading){
         return <h3>Учитавам...</h3>;
     }else{
         return <div>
             <Button component={RouterLink} to="/books/new" variant="contained">Додај</Button>
-            <BooksList list={list} onDelete={(id) => {
+            <BookList list={list} onDelete={(id) => {
                 deleteBook(id, login);
                 reload();
                 }}/>

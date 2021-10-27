@@ -11,16 +11,16 @@ import { Button } from "@mui/material";
 import TableDropdown from "./TableDropdown";
 
 
-const CustomerList = ({list, onDelete}) => {
+const BookList = ({list, onDelete}) => {
     return <div>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }}>
         <TableHead>
           <TableRow>
             <TableCell>ИД</TableCell>
-            <TableCell>Име</TableCell>
-            <TableCell>Презиме</TableCell>
-            <TableCell>Имејл</TableCell>
+            <TableCell>Назив</TableCell>
+            <TableCell>Аутор</TableCell>
+            <TableCell>ИСБН</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -33,15 +33,15 @@ const CustomerList = ({list, onDelete}) => {
               <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
-              <TableCell>{row.firstName}</TableCell>
-              <TableCell>{row.lastName}</TableCell>
-              <TableCell>{row.email}</TableCell>
+              <TableCell>{row.title}</TableCell>
+              <TableCell>{row.author}</TableCell>
+              <TableCell>{row.isbn}</TableCell>
               <TableCell>
                   <TableDropdown text="..."
                   items={
                       [
-                        {text: "Прегледај", link: true, path: `/customer/${row.id}/view`},
-                        {text: "Измени", link: true, path: `/customer/${row.id}/edit`},
+                        {text: "Прегледај", link: true, path: `/book/${row.id}/view`},
+                        {text: "Измени", link: true, path: `/book/${row.id}/edit`},
                         {text: "Бриши", link: false, action: () => onDelete(row.id)}
                       ]
                   }
@@ -55,4 +55,4 @@ const CustomerList = ({list, onDelete}) => {
     </div>
 }
 
-export default CustomerList;
+export default BookList;

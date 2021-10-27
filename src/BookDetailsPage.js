@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useBook, updateBook } from './accessHooks';
-import BookDetails from './CustomerDetails';
+import BookDetails from './BookDetails';
 import { useAuth } from './useAuth';
 import { CircularProgress } from '@mui/material';
 
