@@ -42,7 +42,7 @@ const AllBooksPage = () => {
                 onRowsPerPageChange={(e) => {
                     setPageSize(parseInt(e.target.value, 10));
                 }}
-                labelDisplayedRows={({from, to, count, page}) => `Прикаазујем страницу ${page+1} (${from}-${to+1} од укупно ${count})`}
+                labelDisplayedRows={({from, to, count, page}) => `Приказујем страницу ${page+1} (${from}-${to+1} од укупно ${count})`}
                 labelRowsPerPage="Редова по страници: "
             />
         </div>

@@ -5,3 +5,42 @@
     border-radius: 40px;
     margin: 10px;
 }
+
+/*
+.kartica {
+    width: 5cm;
+    height: 5cm;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 1px;
+    background-color: rosybrown;
+}
+
+.red {
+    text-align: center;
+    font-weight: bold;
+}
+
+.o_d {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 3px;
+}
+
+.ocena {
+    margin-right: 90%;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+}
+
+.dugme {
+    padding: 0px;
+    margin-left: 70%;
+    width: 30%;
+    background-color: yellow;
+    border-radius: 5px;
+}
+
+
+*/

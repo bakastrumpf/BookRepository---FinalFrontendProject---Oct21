@@ -23,8 +23,6 @@ import { useAuth, ProvideAuth} from './useAuth';
 import { Formik } from 'formik';
 import { TextField } from '@mui/material';
 
-
-
 const AuthButton = () => {
   const [login, error, signin, signout] = useAuth();
   const history = useHistory();
@@ -33,7 +31,7 @@ const AuthButton = () => {
           signout( () => history.push("/"));            
       }}>Излогуј се</Button>
   }else{
-      return <Button variant="contained" component={RouterLink} to="/login">Log in</Button>
+      return <Button variant="contained" component={RouterLink} to="/login">Логин</Button>
   }
 }
 
@@ -109,7 +107,7 @@ const LoginBox = () => {
                     type="submit" 
                     disabled={isSubmitting}
                   >
-                    Log in
+                    Логин
                   </Button>
                   <div>{(error) ? error : ""}</div>
               </form>
