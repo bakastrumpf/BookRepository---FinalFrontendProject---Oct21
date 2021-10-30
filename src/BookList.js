@@ -12,7 +12,7 @@ import TableDropdown from "./TableDropdown";
 
 
 const BookList = ({list, onDelete}) => {
-    return <div>
+    return <div className = "kartice">
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }}>
         <TableHead>
@@ -21,6 +21,11 @@ const BookList = ({list, onDelete}) => {
             <TableCell>Назив</TableCell>
             <TableCell>Аутор</TableCell>
             <TableCell>ИСБН</TableCell>
+            <TableCell>Датум објављивања</TableCell>
+            <TableCell>Рејтинг</TableCell>
+            <TableCell>Жанр</TableCell>
+            <TableCell>Доступност</TableCell>
+            <TableCell>Број страна</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -36,6 +41,11 @@ const BookList = ({list, onDelete}) => {
               <TableCell>{row.title}</TableCell>
               <TableCell>{row.author}</TableCell>
               <TableCell>{row.isbn}</TableCell>
+              <TableCell>{row.publishDate}</TableCell>
+              <TableCell>{row.rating}</TableCell>
+              <TableCell>{row.genre}</TableCell>
+              <TableCell>{row.available}</TableCell>
+              <TableCell>{row.pages}</TableCell>
               <TableCell>
                   <TableDropdown text="..."
                   items={

@@ -155,7 +155,7 @@ function App() {
                   <BookDetailsPage/>
                 </PrivateRoute>
                 <Route path="/">
-                  <h1>Финални пројекат</h1>
+                  <h1>Пример недовршеног задатка</h1>
                 </Route>
               </Switch>
             </div>
