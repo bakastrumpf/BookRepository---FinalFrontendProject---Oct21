@@ -7,7 +7,7 @@ export const bookYupSchema = yup.object().shape({
     title: yup.string().ensure().required("Књига мора имати наслов!"),
     author: yup.string().ensure().required("Аутор је обавезно поље."),
     publishDate: yup.date().max(DateTime.now(), "Не може датум скорији од данас."),
-    isbn: yup.string().length(13).ensure.required("ИСБН се састоји од 13 цифара."),
+    isbn: yup.string().length(13).ensure().required("ИСБН се састоји од 13 цифара."),
     rating: yup.number().min(1).max(5).required("Рејтинг књиге на скали 1-5."),
     genre: yup.string().ensure().required("Жанр је обавезно поље."),
     available: yup.boolean().required("Књига може бити доступна или недоступна"),
