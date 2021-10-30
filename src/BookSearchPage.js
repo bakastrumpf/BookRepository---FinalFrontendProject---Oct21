@@ -32,7 +32,7 @@ const BookSearchPage = () => {
     }else{
         return <div>
             <Box sx={{display: "flex", flexDirection:"row", padding: "10px", alignItems: "baseline"}}>
-            <Button component={RouterLink} to="/book/new" variant="contained">Dodaj</Button>
+            <Button component={RouterLink} to="/book/new" variant="contained">Додај</Button>
             <TextField
                     sx={{flexGrow: 1, marginLeft: "60px"}}
                     margin="normal"
@@ -45,7 +45,7 @@ const BookSearchPage = () => {
                     }}
                     variant="outlined"
                 />
-                <Button sx={{marginLeft: "20px"}} variant="contained" onClick={() => setSearchQuery(query)}>Pokreni pretragu</Button>
+                <Button sx={{marginLeft: "20px"}} variant="contained" onClick={() => setSearchQuery(query)}>Претражи</Button>
                 </Box>
             <BookList list={list} onDelete={(id) => {
                 deleteBook(id, login);
