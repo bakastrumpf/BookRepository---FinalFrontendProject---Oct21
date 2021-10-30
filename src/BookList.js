@@ -10,59 +10,48 @@ import { Tab } from "@mui/material";
 import { Button } from "@mui/material";
 import TableDropdown from "./TableDropdown";
 
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
-const BookList = ({list, onDelete}) => {
-    return <div className = "kartice">
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>ИД</TableCell>
-            <TableCell>Назив</TableCell>
-            <TableCell>Аутор</TableCell>
-            <TableCell>ИСБН</TableCell>
-            <TableCell>Датум објављивања</TableCell>
-            <TableCell>Рејтинг</TableCell>
-            <TableCell>Жанр</TableCell>
-            <TableCell>Доступност</TableCell>
-            <TableCell>Број страна</TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {list.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell>{row.title}</TableCell>
-              <TableCell>{row.author}</TableCell>
-              <TableCell>{row.isbn}</TableCell>
-              <TableCell>{row.publishDate}</TableCell>
-              <TableCell>{row.rating}</TableCell>
-              <TableCell>{row.genre}</TableCell>
-              <TableCell>{row.available}</TableCell>
-              <TableCell>{row.pages}</TableCell>
-              <TableCell>
-                  <TableDropdown text="..."
-                  items={
-                      [
-                        {text: "Прегледај", link: true, path: `/book/${row.id}/view`},
-                        {text: "Измени", link: true, path: `/book/${row.id}/edit`},
-                        {text: "Бриши", link: false, action: () => onDelete(row.id)}
-                      ]
-                  }
-                  />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    </div>
+const BookList = ({ list, onDelete }) => {
+    return <div className="kartice">
+        {list.map((row) => (
+            <Card key={row.id} sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        {row.title}
+                    </Typography>
+                    <Typography variant="h5" component="div">
+                        {row.author}
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        {row.publishDate}
+                    </Typography>
+                    <Typography variant="body2">
+                        {row.rating}
+                        <br />
+                        <button>
+                            <TableDropdown text="..."
+                                items={
+                                    [
+                                        { text: "Прегледај", link: true, path: `/book/${row.id}/view` },
+                                        { text: "Измени", link: true, path: `/book/${row.id}/edit` },
+                                        { text: "Обриши", link: false, action: () => onDelete(row.id) }
+                                    ]
+                                }
+                            />
+                        </button>
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button size="small">Детаљније</Button>
+                </CardActions>
+            </Card>
+        ))}
+    </div>;
 }
 
 export default BookList;
