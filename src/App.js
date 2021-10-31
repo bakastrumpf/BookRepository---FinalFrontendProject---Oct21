@@ -23,6 +23,7 @@ import { useAuth, ProvideAuth} from './useAuth';
 import { Formik } from 'formik';
 import { TextField } from '@mui/material';
 
+
 const AuthButton = () => {
   const [login, error, signin, signout] = useAuth();
   const history = useHistory();
@@ -127,6 +128,11 @@ function App() {
       <ProvideAuth>
         <Router>
           <div className="main">
+            <div className="zaglavlje">
+              <h1>Недовршена књижара</h1>
+            </div>
+              
+
             <nav className="mainNav">
               <Button component={RouterLink} to="/allbooks" variant="contained" sx={{marginRight: "10px"}}>
                   Све књиге
