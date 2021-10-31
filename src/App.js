@@ -131,8 +131,14 @@ function App() {
               <Button component={RouterLink} to="/allbooks" variant="contained" sx={{marginRight: "10px"}}>
                   Све књиге
               </Button>
-              <Button component={RouterLink} to="/searchbooks" variant="contained">
+              <Button component={RouterLink} to="/searchbooks" variant="contained" sx={{marginRight: "10px"}}>
                   Претрага
+              </Button>
+              <Button component={RouterLink} to="/searchauthor" variant="contained" sx={{marginRight: "10px"}}>
+                  Аутори
+              </Button>
+              <Button component={RouterLink} to="/addbook" variant="contained">
+                  Додај књигу
               </Button>
               <span style={{flexGrow: 1}}/>
               <AuthButton></AuthButton>
@@ -142,12 +148,18 @@ function App() {
                 <Route path="/login">
                   <LoginBox/>
                 </Route>
+             {/* <Route path="/register">
+                <RegisterBox/>
+              </Route>  */}
                 <PrivateRoute path="/allbooks">
                   <AllBooksPage/>
                 </PrivateRoute>
                 <PrivateRoute path="/searchbooks">
                   <BookSearchPage/>
                 </PrivateRoute>
+               {/* <PrivateRoute path="/searchauthor">
+                  <SearchAuthorPage/>
+                </PrivateRoute> */}
                 <PrivateRoute path="/book/new">
                   <AddBookPage/>
                 </PrivateRoute>

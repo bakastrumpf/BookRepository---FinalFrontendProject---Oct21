@@ -18,28 +18,28 @@ import Typography from '@mui/material/Typography';
 
 const BookList = ({ list, onDelete }) => {
     return <div className="kartice">
-        {list.map((row) => (
-            <Card key={row.id} sx={{ minWidth: 275 }}>
+        {list.map((kartice) => (
+            <Card key={kartice .id} sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {row.title}
+                        {kartice.title}
                     </Typography>
                     <Typography variant="h5" component="div">
-                        {row.author}
+                        {kartice.author}
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                        {row.publishDate}
+                        {kartice.publishDate}
                     </Typography>
                     <Typography variant="body2">
-                        {row.rating}
+                        {kartice.rating}
                         <br />
                         <button>
                             <TableDropdown text="..."
                                 items={
                                     [
-                                        { text: "Прегледај", link: true, path: `/book/${row.id}/view` },
-                                        { text: "Измени", link: true, path: `/book/${row.id}/edit` },
-                                        { text: "Обриши", link: false, action: () => onDelete(row.id) }
+                                        { text: "Прегледај", link: true, path: `/book/${kartice.id}/view` },
+                                        { text: "Измени", link: true, path: `/book/${kartice.id}/edit` },
+                                        { text: "Обриши", link: false, action: () => onDelete(kartice.id) }
                                     ]
                                 }
                             />
