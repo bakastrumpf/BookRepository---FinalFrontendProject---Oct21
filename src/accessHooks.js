@@ -20,7 +20,7 @@ export const usePagedBookList = (initialPageSize, url="http://localhost:3081/app
         })
             .then(resp => resp.json())
             .then(data => {
-                if(data.status == "ok"){
+                if(data.status === "ok"){
                     setLength(data.body.length);
                     setList(data.body.results); 
                     setLoading(false);
@@ -115,7 +115,7 @@ export const usePagedSearchBookList = (initialPageSize, query, url="http://local
             })
             .then(resp => resp.json())
             .then(data => {
-                if(data.status == "ok"){
+                if(data.status === "ok"){
                     setLength(data.body.length);
                     setList(data.body.results); 
                     setLoading(false);

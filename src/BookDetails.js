@@ -88,7 +88,6 @@ const BookDetails = ({ startingMode, book, action }) => {
                     maxRows={4}
                     InputProps={inputProps}
                 />
-
                 <TextField
                     fullWidth
                     margin="normal"
@@ -101,8 +100,14 @@ const BookDetails = ({ startingMode, book, action }) => {
                     helperText={touched.isbn && errors.isbn}
                     variant="outlined"
                     InputProps={inputProps}
-                />
-
+               /> 
+              {/*} <MenuItem value={"рачунари"}>Рачунари</MenuItem>,
+               <MenuItem value={"програмирање"}>Програмирање</MenuItem>,
+               <MenuItem value={"језици"}>Језици</MenuItem>,
+               <MenuItem value={"теорија"}>Теорија</MenuItem>,
+               <MenuItem value={"приручници"}>Приручници</MenuItem>,
+               <MenuItem value={"програмирање"}>Програмирање</MenuItem>,
+                */}
             <DatePicker
                     margin="normal"
                     name="publishDate"
@@ -143,7 +148,6 @@ const BookDetails = ({ startingMode, book, action }) => {
                     onBlur={handleBlur}
                     error={touched.genre && Boolean(errors.genre)}
                     helperText={touched.genre && errors.genre}
-                    
                     variant="outlined"
                 />
                 <TextField
@@ -156,9 +160,8 @@ const BookDetails = ({ startingMode, book, action }) => {
                 onBlur={handleBlur}
                 error={touched.available && Boolean(errors.available)}
                 helperText={touched.available && errors.available}
-                
                 variant="outlined"
-            />
+                />
             <TextField
             fullWidth
             margin="normal"
@@ -170,15 +173,14 @@ const BookDetails = ({ startingMode, book, action }) => {
             error={touched.pages && Boolean(errors.pages)}
             helperText={touched.pages && errors.pages}
             variant="outlined"
-        />
-
+            />
                 {
                     (mode === "view") ? "" : <Button disabled={isSubmitting} 
                         color="primary" variant="contained" fullWidth type="submit">Сними</Button>
                 }
-            </form>
-            )}
-            
+            </form> 
+           
+            )}  
         </Formik>        
     </div>
 };
