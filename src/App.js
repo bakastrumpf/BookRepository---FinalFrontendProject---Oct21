@@ -132,6 +132,29 @@ function App() {
               <h1>Недовршена књижара</h1>
             </div>
               
+            <div class="levi_meni">
+                <div class="dropdown">
+                    <button class="dropbtn"> <h3> Категорије ∇ </h3> </button>
+                    <div class="dropdown-content">
+                        <a href="akc"><p><i> Акција ⨁ </i></p></a>
+                        <a href="dtk"><p> <i> Детективски ⨁ </i> </p></a>
+                        <a href="drm"><p> <i> Драма ⨁ </i> </p></a>
+                        <a href="ksk"><p> <i> Класици светске књижевности ⨁ </i> </p></a>
+                        <a href="tr"><p> <i> Трилери ⨁ </i> </p></a>
+                        <a href="strlt"><p> <i> Стручна литература ⨁ </i> </p></a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn"> <h3> Аутори ▹ </h3> </button>
+                </div> 
+
+                <div class="dropdown">
+                    <button class="dropbtn"> <h3> Наслови ▹ </h3> </button>
+                </div> 
+
+            </div>
+
 
             <nav className="mainNav">
               <Button component={RouterLink} to="/allbooks" variant="contained" sx={{marginRight: "10px"}}>
